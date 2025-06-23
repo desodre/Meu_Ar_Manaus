@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:geolocator/geolocator.dart';
 import 'package:meu_ar_mao/data/air_quality.dart';
-import 'package:meu_ar_mao/data/api_key.dart';
 import 'package:http/http.dart' as http;
 
 Future<AirQuality?> fetchData() async {
@@ -31,7 +30,7 @@ Future<AirQuality?> fetchData() async {
     Position position = await Geolocator.getCurrentPosition();
 
     var url = Uri.parse(
-        'https://api.waqi.info/feed/geo:${position.latitude};${position.longitude}/?token=$API_KEY');
+        'https://api.waqi.info/feed/geo:${position.latitude};${position.longitude}');
 
     var response = await http.get(url);
 
